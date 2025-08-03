@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ <h1 style='text-align:center'>🐝 BadFly</h1>
 
-## Getting Started
+**BadFly** is a sleek, modern tribute to the original [Adf.ly](https://adf.ly), built as a side project to explore and learn advanced features of the Next.js framework. It allows users to shorten URLs, track visits, and manage links—all backed by MongoDB.
 
-First, run the development server:
+![BadFly Snapshot](/public/badfly-snapshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- 🔗 URL shortening with unique codes
+- 📈 Visit tracking for each shortened link
+- 🧹 URL management (delete & copy)
+- ⚡ Optimistic UI with real-time updates
+- 🧠 Built using server actions (Next.js 14+)
+- 🎯 Pagination-ready structure
+- 🔒 Clipboard copy with visual feedback
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/)
+- **Database:** [MongoDB](https://www.mongodb.com/)
+- **ODM:** [Mongoose](https://mongoosejs.com/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons:** [Lucide](https://lucide.dev/)
+
+---
+
+## 📂 Folder Structure
+
+```
+.
+├── app/
+│   ├── page.tsx   # Main homepage
+│   └── [shortCode]  # Dynamic redirect route
+├── components/
+│   ├── URLShorteningContainer.tsx
+│   ├── ShorteningForm.tsx
+│   └── URLList.tsx
+├── server/
+│   └── urls.ts  # DB operations
+└── lib/
+    └── db.ts  # MongoDB connection
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Get Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/yourusername/badfly.git
+cd badfly
+npm install
+```
 
-## Learn More
+## Set up environment variables in .env
 
-To learn more about Next.js, take a look at the following resources:
+```ini
+MONGODB_URI=your_mongodb_connection_string
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Run the app
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+<p style="text-align: center; margin-top: 20px;">Made with ❤</p>
