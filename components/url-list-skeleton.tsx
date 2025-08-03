@@ -12,7 +12,7 @@ export default function URLListSkeleton() {
         {fakeItems.map((_, index) => (
           <li
             key={index}
-            className="group w-full border border-gray-300 rounded-lg my-5 px-3 py-5 animate-pulse"
+            className="group w-full border relative border-gray-300 rounded-lg my-5 px-3 py-5 animate-pulse"
           >
             <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
               <Skeleton className="h-4 w-[70%] md:w-[40%] bg-gray-300" />
@@ -26,7 +26,7 @@ export default function URLListSkeleton() {
               </div>
             </div>
 
-            <div className="absolute right-3 top-3">
+            <div className="absolute right-1 top-1">
               <Skeleton className="h-3 w-3 rounded-full bg-gray-300" />
             </div>
           </li>

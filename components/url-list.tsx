@@ -43,29 +43,29 @@ export default function URLList({ urls, refresh }: URLListProps,) {
   }
 
   if (urls.length === 0) {
-    return <div className="min-h-[420px] flex items-center justify-center font-bold text-2xl">No URLs found...</div>;
+    return <div className="min-h-[420px] flex items-center justify-center font-bold text-2xl text-white">No URLs found...</div>;
   } else {
     return (
-      <div className="min-h-[420px]">
+      <div className="min-h-[415px]">
         <ul>
           {urls.map((url) => (
             <li
-              className="group w-full border relative border-gray-300 rounded-lg my-5 px-3 py-5 hover:translate-y-[-2px] duration-200"
+              className="group w-full relative bg-neutral-900 rounded-lg my-5 px-3 py-5 hover:translate-y-[-2px] duration-200"
               key={url._id}
             >
               <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
-                <div className="url text-blue-500">
+                <div className="url text-white underline">
                   <Link href={`/${url.shortCode}`} target="_blank">{formatUrl(url.shortCode)}</Link>
                 </div>
                 <div className="options flex items-center gap-5">
                   <button onClick={() => handleCopyLink(url.shortCode)}>
-                     {copiedUrl == url.shortCode ? <CheckIcon className="w-4 h-4"/> : 
-                      <CopyIcon className="w-4 h-4 text-muted-foreground hover:bg-muted" /> }
+                     {copiedUrl == url.shortCode ? <CheckIcon className="w-4 h-4 text-white"/> : 
+                      <CopyIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" /> }
                   </button>
                   
                   <div className="flex items-center gap-3">
-                    <EyeIcon className="w-4 h-4" />
-                    <span>{url.visits} clicks</span>
+                    <EyeIcon className="w-4 h-4 text-white" />
+                    <span className="text-white">{url.visits} clicks</span>
                   </div>
                 </div>
               </div>
