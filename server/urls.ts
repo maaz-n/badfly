@@ -9,8 +9,7 @@ import { nanoid } from "nanoid";
 export const createShortURL = async (originalUrl: string) => {
   try {
     const user = await currentUser()
-    if(!user) return
-    const userId = user.id
+    const userId = user?.id
     await connectDB();
     await URLs.create({ originalUrl, shortCode: nanoid(8), userId });
     return { success: true, message: "URL generated" };
