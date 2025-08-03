@@ -5,6 +5,7 @@ import URLList from "./url-list";
 import { getUrls } from "@/server/urls";
 import Pagination from "./pagination";
 import URLListSkeleton from "./url-list-skeleton";
+import { useUser } from "@clerk/nextjs";
 
 type URL = {
   _id: string;
@@ -18,11 +19,15 @@ export default function URLShorteningContainer() {
   const [urls, setUrls] = useState<URL[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const linksPerPage = 5;
+  const data = useUser()
 
   async function fetchUrls() {
     try {
+      const user = data.user
+      if(!user) return
+      const userId = user.id
       setIsLoading(true);
-      const response = await getUrls();
+      const response = await getUrls(userId);
       if (response) {
         setUrls(response);
       }

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BadFly",
-  description: "Yours truly link shortening app",
+  title: "BadFly - Your go-to link shortening app",
+  description: `The ultimate link shortening app of ${new Date().getFullYear()}`,
 };
 
 export default function RootLayout({

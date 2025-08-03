@@ -15,6 +15,10 @@ const urlSchema = new mongoose.Schema({
     visits: {
         type: Number,
         default: 0
+    },
+    userId: {
+        type: String,
+        required: true
     }
 }, {timestamps: true})
 

@@ -2,13 +2,17 @@
 
 import { connectDB } from "@/db/db";
 import { URLs } from "@/db/schema";
+import { currentUser } from "@clerk/nextjs/server";
 import { ObjectId } from "mongoose";
 import { nanoid } from "nanoid";
 
 export const createShortURL = async (originalUrl: string) => {
   try {
+    const user = await currentUser()
+    if(!user) return
+    const userId = user.id
     await connectDB();
-    await URLs.create({ originalUrl, shortCode: nanoid(8) });
+    await URLs.create({ originalUrl, shortCode: nanoid(8), userId });
     return { success: true, message: "URL generated" };
   } catch (error) {
     console.error(error);
@@ -23,10 +27,10 @@ interface urlProps {
     visits: number
 }
 
-export const getUrls = async () => {
+export const getUrls = async (userId: string) => {
   try {
     await connectDB();
-    const urls: urlProps[] = await URLs.find().sort({createdAt: -1}).lean<urlProps[]>();
+    const urls: urlProps[] = await URLs.find({userId}).sort({createdAt: -1}).lean<urlProps[]>();
     return urls.map((url) => ({
       ...url,
       _id: url._id.toString(),
