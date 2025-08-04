@@ -1,4 +1,4 @@
- <h1 style='text-align:center'>🐝 BadFly</h1>
+ <h1 align="center">🐝 BadFly</h1>
 
 **BadFly** is a sleek, modern tribute to the original [Adf.ly](https://adf.ly), built as a side project to explore and learn advanced features of the Next.js framework. It allows users to shorten URLs, track visits, and manage links—all backed by MongoDB.
 
@@ -68,4 +68,4 @@ npm run dev
 ```
 
 ---
-<p style="text-align: center; margin-top: 20px;">Made with ❤</p>
+<p align="center" style="margin-top: 20px;">Made with ❤</p>
