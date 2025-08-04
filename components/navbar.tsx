@@ -1,4 +1,3 @@
-import { SignedIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 
@@ -11,7 +10,6 @@ export default function Navbar() {
           </h2>
         </div>
         <div className="links">
-          <SignedIn>
             <div className="flex gap-10">
               <ul className="flex gap-10">
                 <li className="hover:translate-y-[-2px] duration-100">
@@ -21,9 +19,7 @@ export default function Navbar() {
                   <Link href={"/about"}>About</Link>
                 </li>
               </ul>
-              <UserButton />
             </div>
-          </SignedIn>
         </div>
       </nav>
   )

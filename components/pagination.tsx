@@ -14,7 +14,7 @@ export default function Pagination({ totalLinks, linksPerPage, setCurrentPage, c
         pages.push(i)
     }
   return (
-    <div className='flex justify-center my-3'>
+    <div className='flex justify-center mt-5'>
         {
             pages.map((page, index) => {
                 return <button key={index} onClick={() => setCurrentPage(page)} className={`mx-2 px-4 py-2 border border-white rounded-lg font-bold ${page == currentPage ? 'text-black bg-white  duration-200' : 'text-white' } cursor-pointer shadow hover:shadow-2xl`}>{page}</button>

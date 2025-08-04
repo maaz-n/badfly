@@ -16,10 +16,6 @@ const urlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    userId: {
-        type: String,
-        required: true
-    }
 }, {timestamps: true})
 
 export const URLs =  mongoose.models.URLs || mongoose.model("URLs", urlSchema)

@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckIcon, CopyIcon, EyeIcon, X } from "lucide-react";
+import { CheckIcon, CopyIcon, ExternalLink, EyeIcon, X } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
 import { deleteUrl } from "@/server/urls";
@@ -46,7 +46,8 @@ export default function URLList({ urls, refresh }: URLListProps,) {
     return <div className="min-h-[420px] flex items-center justify-center font-bold text-2xl text-white">No URLs found...</div>;
   } else {
     return (
-      <div className="min-h-[415px]">
+      <div className="min-h-[455px]">
+        <h2 className="text-center text-white my-5 text-2xl font-bold">Recent URLs</h2>
         <ul>
           {urls.map((url) => (
             <li
@@ -54,8 +55,14 @@ export default function URLList({ urls, refresh }: URLListProps,) {
               key={url._id}
             >
               <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
-                <div className="url text-white underline">
-                  <Link href={`/${url.shortCode}`} target="_blank">{formatUrl(url.shortCode)}</Link>
+                <div className="url text-white font-bold">
+                  <Link href={`/${url.shortCode}`} target="_blank">
+                  <div className="flex items-center gap-2">
+                  {formatUrl(url.shortCode)}
+                  <ExternalLink className="w-4 h-4"/>
+
+                  </div>
+                  </Link>
                 </div>
                 <div className="options flex items-center gap-5">
                   <button onClick={() => handleCopyLink(url.shortCode)}>

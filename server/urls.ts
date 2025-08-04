@@ -8,10 +8,10 @@ import { nanoid } from "nanoid";
 
 export const createShortURL = async (originalUrl: string) => {
   try {
-    const user = await currentUser()
-    const userId = user?.id
+    // const user = await currentUser()
+    // const userId = user?.id
     await connectDB();
-    await URLs.create({ originalUrl, shortCode: nanoid(8), userId });
+    await URLs.create({ originalUrl, shortCode: nanoid(8) });
     return { success: true, message: "URL generated" };
   } catch (error) {
     console.error(error);
@@ -26,10 +26,10 @@ interface urlProps {
     visits: number
 }
 
-export const getUrls = async (userId: string) => {
+export const getUrls = async () => {
   try {
     await connectDB();
-    const urls: urlProps[] = await URLs.find({userId}).sort({createdAt: -1}).lean<urlProps[]>();
+    const urls: urlProps[] = await URLs.find({}).sort({createdAt: -1}).lean<urlProps[]>();
     return urls.map((url) => ({
       ...url,
       _id: url._id.toString(),
