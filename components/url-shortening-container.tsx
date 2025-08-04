@@ -43,7 +43,7 @@ export default function URLShorteningContainer() {
   const currentLinks = urls.slice(firstLinkIndex, lastLinkIndex);
 
   return (
-    <div className="w-[70%] lg:w-[35%] mx-auto">
+    <div className="w-[80%] lg:w-[35%] mx-auto">
       <ShorteningForm refresh={fetchUrls} />
       {isLoading ? (
         <URLListSkeleton/>

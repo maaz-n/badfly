@@ -57,7 +57,7 @@ export default function URLList({ urls, refresh }: URLListProps,) {
               <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
                 <div className="url text-white font-bold">
                   <Link href={`/${url.shortCode}`} target="_blank">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center text-sm sm:text-base gap-2">
                   {formatUrl(url.shortCode)}
                   <ExternalLink className="w-4 h-4"/>
 
