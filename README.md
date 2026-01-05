@@ -58,7 +58,7 @@ npm install
 ## Set up environment variables in .env
 
 ```ini
-MONGODB_URI=your_mongodb_connection_string
+DATABASE_URI=your_mongodb_connection_string
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
