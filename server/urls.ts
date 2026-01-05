@@ -2,14 +2,11 @@
 
 import { connectDB } from "@/db/db";
 import { URLs } from "@/db/schema";
-import { currentUser } from "@clerk/nextjs/server";
 import { ObjectId } from "mongoose";
 import { nanoid } from "nanoid";
 
 export const createShortURL = async (originalUrl: string) => {
   try {
-    // const user = await currentUser()
-    // const userId = user?.id
     await connectDB();
     await URLs.create({ originalUrl, shortCode: nanoid(8) });
     return { success: true, message: "URL generated" };

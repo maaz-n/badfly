@@ -33,10 +33,10 @@ export default function URLList({ urls, refresh }: URLListProps,) {
 
   const handleDelete = async (id: string) => {
     const response = await deleteUrl(id)
-    if(response.success){
+    if (response.success) {
       toast.success(response.message)
       refresh()
-    }else{
+    } else {
       toast.error(response.message)
     }
 
@@ -54,31 +54,38 @@ export default function URLList({ urls, refresh }: URLListProps,) {
               className="group w-full relative bg-neutral-900 rounded-lg my-5 px-3 py-5 hover:translate-y-[-2px] duration-200"
               key={url._id}
             >
-              <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
-                <div className="url text-white font-bold">
-                  <Link href={`/${url.shortCode}`} target="_blank">
-                  <div className="flex items-center text-sm sm:text-base gap-2">
-                  {formatUrl(url.shortCode)}
-                  <ExternalLink className="w-4 h-4"/>
+              <div className="wrapper flex flex-col gap-y-3">
 
+                <div className="flex flex-col gap-5 md:flex-row justify-between items-center">
+                  <div className="url text-white font-bold">
+                    <Link href={`/${url.shortCode}`} target="_blank">
+                      <div className="flex items-center text-sm sm:text-base gap-2">
+                        {formatUrl(url.shortCode)}
+                        <ExternalLink className="w-4 h-4" />
+
+                      </div>
+                    </Link>
                   </div>
-                  </Link>
-                </div>
-                <div className="options flex items-center gap-5">
-                  <button onClick={() => handleCopyLink(url.shortCode)}>
-                     {copiedUrl == url.shortCode ? <CheckIcon className="w-4 h-4 text-white"/> : 
-                      <CopyIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" /> }
+                  <div className="options flex items-center gap-5">
+                    <button onClick={() => handleCopyLink(url.shortCode)}>
+                      {copiedUrl == url.shortCode ? <CheckIcon className="w-4 h-4 text-white" /> :
+                        <CopyIcon className="w-4 h-4 text-gray-400 hover:text-white cursor-pointer" />}
+                    </button>
+
+                    <div className="flex items-center gap-3">
+                      <EyeIcon className="w-4 h-4 text-white" />
+                      <span className="text-white">{url.visits} clicks</span>
+                    </div>
+                  </div>
+                  <button className="absolute right-1 top-1 text-muted-foreground opacity-0 group-hover:opacity-100 duration-200 cursor-pointer" onClick={() => handleDelete(url._id)}>
+                    <X className="w-3 h-3" />
                   </button>
-                  
-                  <div className="flex items-center gap-3">
-                    <EyeIcon className="w-4 h-4 text-white" />
-                    <span className="text-white">{url.visits} clicks</span>
-                  </div>
+
+                </div>
+                <div className="points-to ml-5 text-sm">
+                  <span className="text-neutral-600">→ {url.originalUrl.split("/")[2]}</span>
                 </div>
               </div>
-              <button className="absolute right-1 top-1 text-muted-foreground opacity-0 group-hover:opacity-100 duration-200 cursor-pointer" onClick={() => handleDelete(url._id)}>
-                <X className="w-3 h-3"/>
-              </button>
             </li>
           ))}
         </ul>
